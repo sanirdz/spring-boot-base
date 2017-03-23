@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<div class="table-responsive">
+		<table class="table table-condensed table-bordered table-striped" id="tabela-usuarios">
+			<thead>
+				<tr>
+					<th>
+						<a style="cursor:pointer;" th:onclick="'pesquisar(' + ${lista.number + ', ' + lista.size} + ', \'' + ${sortColumn} + '\')'">
+							Nome
+							<i th:if="${sortColumn eq 'login,asc'}" class="fa fa-sort-desc" aria-hidden="true"></i>
+							<i th:if="${sortColumn eq 'login,desc'}"  class="fa fa-sort-asc" aria-hidden="true"></i>
+						</a>
+					</th>
+					<th style="width: 10%">
+						Ativo 
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="it : ${lista}">
+					<td th:text="${it.login}">
+						usuario
+					</td>
+					<td>
+						<span th:switch="${it.enabled}">
+							<i th:case="true" class="fa fa-circle" aria-hidden="true" title="Ativo" style="color:blue"></i>
+							<i th:case="false" class="fa fa-circle" aria-hidden="true" title="Inativo" style="color:gray"></i>
+						</span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<div th:include="fragments/paginacao"></div>
+	</div>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" 
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout" th:with="secao='Usuários'">
+	
+	<body>
+		<div layout:fragment="content">
+			<div>
+				<form action="#" th:action="@{/relatorio/}" th:object="${usuario}" method="post" id="form-pesquisa">
+					<div>
+						<div class="form-group">
+						    <label for="login" class="control-label">Login</label>
+							<input type="text" th:field="*{login}" class="form-control"/>
+					    </div>
+						
+					</div>
+				    <div>
+						<button value="Pesquisar" class="btn btn-primary" onclick="event.preventDefault(); pesquisar()">Pesquisar</button>
+					</div>
+			    </form>
+			</div>
+			
+			<div id="resultado">
+			</div>
+			
+			<div class="pull-right">
+  				<a class="btn btn-warning" href="../index.html" th:href="@{/}">Voltar</a>
+			</div>
+
+			<script type="text/javascript" th:inline="javascript">
+				function pesquisar(page, size, sort) {
+					var url = /*[[@{/relatorio}]]*/ '';
+					
+					var params = '';
+					
+					/*<![CDATA[*/
+					//tem que fazer isso por causa do &
+					if(page != null) {
+						/*[+params += 'page=' + page + '&';+]*/
+					}
+					
+					if(size != null) {
+						/*[+params += 'size=' + size + '&';+]*/
+					}
+					
+					if(sort != null) {
+						/*[+params += 'sort=' + sort + '&';+]*/
+					} else {
+						/*[+params += 'sort=login,asc&';+]*/
+					}
+					/*]]>*/
+					
+					
+					$.ajax({
+						type:'POST',
+						url: url + '?' + params,
+						data: $('#form-pesquisa').serialize(),
+						success: function(data, textStatus) {
+							$('#resultado').html(data);
+						},
+						error: function(request, status, error) {
+							alert('Erro no servidor: ' + status);
+						}
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>

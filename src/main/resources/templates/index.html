@@ -1,0 +1,13 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" 
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout" th:with="secao='Home'">
+	
+	<body>
+		<div layout:fragment="content">
+			<a href="/cadastro/index.html" th:href="@{/cadastro/}">Usuários</a>
+			|
+			<a href="/relatorio/index.html" th:href="@{/relatorio/}">Relatório</a>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<div class="table-pagination text-center" th:if="${lista != null}">
+	    <ul class="pagination pagination-centered" >
+	        <li th:class="${lista.first} ? 'disabled' : ''">
+	            <a th:onclick="${lista.first} ? '' : 'pesquisar(0, ' + ${lista.size} + ', \'' + ${sort} + '\')'" href="#">&laquo;</a>
+	        </li>
+	        
+	        <li th:class="${lista.first} ? 'disabled' : ''">
+	            <a th:onclick="${lista.first} ? '' : 'pesquisar(' + ${lista.number - 1} + ', ' + ${lista.size} + ', \'' + ${sort} + '\')'" href="#">&lt;</a>
+	        </li>
+	
+	        <li th:each="pageNumber: ${#numbers.sequence(paginacao_begin, paginacao_end)}" th:class="${lista.number eq pageNumber} ? 'active' : ''">
+	            <a href="#" th:onclick="${lista.number eq pageNumber} ? '' : 'pesquisar(' + ${pageNumber} + ', ' + ${lista.size} + ', \'' + ${sort} + '\')'">
+	                <span th:text="${pageNumber + 1}"></span>
+	            </a>
+	        </li>
+	        
+	        <li th:class="${lista.last} ? 'disabled' : ''">
+	            <a th:onclick="${lista.last} ? '' : 'pesquisar(' + ${lista.number + 1} + ', ' + ${lista.size} + ', \'' + ${sort} + '\')'" href="#">&gt;</a>
+	        </li>
+	        
+	        <li th:class="${lista.last} ? 'disabled' : ''">
+	            <a th:onclick="${lista.last} ? '' : 'pesquisar(' + ${lista.totalPages - 1} + ', ' + ${lista.size} + ', \'' + ${sort} + '\')'" href="#">&raquo;</a>
+	        </li>
+	    </ul>
+	</div>
+</html>

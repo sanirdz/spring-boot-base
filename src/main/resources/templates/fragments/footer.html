@@ -1,0 +1,8 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+  <body>
+    <div th:fragment="versao">
+      <small><span th:text="${'Versão: ' + @environment.getProperty('application.version')}"></span> - <span th:text="${'build: ' + @environment.getProperty('build.number')}"></span></small>
+    </div>
+  </body>
+</html>

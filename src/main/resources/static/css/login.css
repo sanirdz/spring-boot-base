@@ -1,7 +1,7 @@
 body, html {
     height: 100%;
     background-repeat: no-repeat;
-    background-image: linear-gradient(rgb(91, 1, 0), rgb(157, 106, 105));
+    background-image: linear-gradient(rgb(0, 0, 0), rgb(138, 135, 135));
     
 }
 
@@ -122,7 +122,7 @@ body, html {
 .btn-signin:hover,
 .btn-signin:active,
 .btn-signin:focus {
-    background-color: rgb(12, 97, 33);
+    background-color: rgb(56, 87, 155);
 }
 
 .forgot-password {
